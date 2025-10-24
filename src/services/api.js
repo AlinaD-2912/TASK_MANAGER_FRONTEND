@@ -7,6 +7,7 @@ const apiClient = axios.create({
     },
 })
 
+
 // Ajouter un intercepteur pour logger les requêtes
 apiClient.interceptors.request.use((request) => {
     console.log('Starting Request', request)
@@ -17,4 +18,16 @@ export const api = {
     getHello() {
         return apiClient.get(`/hello`)
     },
+    getTasks() {
+        return apiClient.get('/')
+    },
+    addTask(task) {
+        return apiClient.post('/', task)
+    },
+    deleteTask() {
+        return apiClient.delete(`/${taskId}`)    },
+    completeTask() {
+        return apiClient.put(`/${taskId}/complete`)
+    }
 }
+

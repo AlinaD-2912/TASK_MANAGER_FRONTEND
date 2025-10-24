@@ -13,6 +13,9 @@ onMounted(async () => {
 
 <template>
     <p>{{ title }}</p>
+    <ul>
+        <li v-for="user in users">{{ user.name.first }}</li>
+    </ul>
 </template>
 
 <style scoped></style>
