@@ -1,22 +1,35 @@
-<script setup>
-    import HelloWorld from './components/HelloWorld.vue'
-    import AddTask from './components/AddTask.vue';
-    import ListTasks from './components/ListTasks.vue';
-</script>
-
 <template>
     <main>
         <h1>Task Manager</h1>
-        <HelloWorld/>
+        <HelloWorld />
 
         <div>
-            <AddTask/>
+            <AddTask @task-added="refreshTasks" />
         </div>
 
         <div>
-            <ListTasks/>
+            <ListTasks ref="taskList" />
         </div>
     </main>
 </template>
 
-<style scoped></style>
+<script setup>
+import { ref } from 'vue'
+import HelloWorld from './components/HelloWorld.vue'
+import AddTask from './components/AddTask.vue'
+import ListTasks from './components/ListTasks.vue'
+
+const taskList = ref(null)
+
+const refreshTasks = () => {
+    if (taskList.value) {
+        taskList.value.loadTasks()
+    }
+}
+</script>
+
+<style scoped>
+main h1 {
+    text-align: center;
+}
+</style>
