@@ -66,6 +66,7 @@ div form button {
 }
 div form button:hover {
     background-color: rgb(78, 199, 255);
+    border-color: rgb(38, 194, 221);
     color: black;
 }
 </style>
