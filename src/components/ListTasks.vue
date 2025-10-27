@@ -138,5 +138,6 @@ div table th {
     text-align: left;
     background-color: #8182e9;
     color: white;
+    font-weight: 600;
 }
 </style>
