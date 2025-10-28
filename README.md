@@ -60,6 +60,8 @@ npm run test:e2e -- --project=chromium
 npm run test:e2e -- tests/example.spec.ts
 # Runs the tests in debug mode
 npm run test:e2e -- --debug
+# use this one
+npm run test:e2e:ui
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
