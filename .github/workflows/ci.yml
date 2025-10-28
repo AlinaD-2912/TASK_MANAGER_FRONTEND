@@ -32,11 +32,11 @@ jobs:
 
       # Run unit tests
       - name: Run unit tests
-        run: npm test
+        run: npm run test:unit
 
       # Run end-to-end tests
       - name: Run end-to-end tests
         if: always()
-        run: npm run test:e2e
+        run: npm run test:e2e:ui  
         env:
           API_URL: ${{ secrets.API_URL }}  
