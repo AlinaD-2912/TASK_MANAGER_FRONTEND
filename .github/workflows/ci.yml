@@ -1,0 +1,42 @@
+name: Continuous Integration (Vue + JS)
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # Get code from github
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'  
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # Build the project (Vue or Vite)
+      - name: Build project
+        run: npm run build
+
+      # Run unit tests
+      - name: Run unit tests
+        run: npm test
+
+      # Run end-to-end tests
+      - name: Run end-to-end tests
+        if: always()
+        run: npm run test:e2e
+        env:
+          API_URL: ${{ secrets.API_URL }}  
