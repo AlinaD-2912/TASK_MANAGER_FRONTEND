@@ -37,6 +37,12 @@ test('adds the task', async ({ page }) => {
 
     // search for added task in table
     await expect(page.locator('tbody')).toContainText('Task to be added')
+
+    // take the row with the task
+    const taskRow = page.locator('tbody tr', { hasText: 'Task to be added' })
+
+    // click button supprimer
+    await taskRow.locator('button:has-text("Supprimer")').click()
 })
 
 test('completes the task', async ({ page }) => {
@@ -67,6 +73,9 @@ test('completes the task', async ({ page }) => {
 
     // status changed
     await expect(statusCell).toHaveText('terminé')
+
+    // click button supprimer
+    await taskRow.locator('button:has-text("Supprimer")').click()
 })
 
 test('delete the task', async ({ page }) => {

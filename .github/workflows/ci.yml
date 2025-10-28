@@ -37,6 +37,6 @@ jobs:
       # Run end-to-end tests
       - name: Run end-to-end tests
         if: always()
-        run: npm run test:e2e:ui  
+        run: npm run test:e2e -- --project=chromium
         env:
           API_URL: ${{ secrets.API_URL }}  
